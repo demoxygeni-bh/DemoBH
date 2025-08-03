@@ -37,7 +37,7 @@ jobs:
           # Block Secrets
           # command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
           # Block Malware
-          command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
+          command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail
           # Only Scan
           # command: -cop commitResolution:auto scan --send-to github/status --never-fail
 
