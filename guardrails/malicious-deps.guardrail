@@ -1,0 +1,8 @@
+guardrail 'malicious-deps'
+on suspectdeps
+  when severity = critical and type = 'malware_dependency'
+  then
+    @print( "☠️  Malicious package: ${dependency.gav}" ),
+    @print( 'BUILD WILL BE ABORTED !!!' ),
+    @print( '' ),
+    @exitcode(170)

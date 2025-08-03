@@ -34,7 +34,7 @@ jobs:
           xygeni_url: https://api.xygeni.io
           token: ${{ secrets.XYGENI_TOKEN }}
           gh_token: ${{ secrets.PAT_FOR_XYGENI_SCAN }}
-          command: -cop commitResolution:auto scan --never-fail
+          command: -cop commitResolution:auto scan --fail-on file:./guardrails/secrets-critical.guardrail
 
       - name: Archive WAR file
         if: success()
