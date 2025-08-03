@@ -24,6 +24,14 @@ jobs:
         run: mvn clean install -DskipTests
         working-directory: user-profile-app
 
+      - name: Xygeni-Scanner
+        uses: xygeni/xygeni-action@v3.2.0
+        id: Xygeni-Scanner
+        with:
+          xygeni_url: https://api.xygeni.io
+          token: ${{ secrets.XYGENI_TOKEN }}
+          gh_token: ${{ secrets.PAT_FOR_XYGENI_SCAN }}
+
       - name: Archive WAR file
         if: success()
         uses: actions/upload-artifact@v4
