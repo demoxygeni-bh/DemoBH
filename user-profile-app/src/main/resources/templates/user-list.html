@@ -24,6 +24,7 @@
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.surname}"></td>
                 <td th:text="${user.loginId}"></td>
+                <td th:text="${user.email}"></td>
                 <td>
                     <a th:href="@{/user/edit/{id}(id=${user.id})}" class="btn btn-primary">Edit</a>
                     <a th:href="@{/user/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>

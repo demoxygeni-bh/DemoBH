@@ -16,7 +16,7 @@ public class User {
     private String surname;
     private String loginId;
     private String password;
-    @Column(length = 2000);
+    private String email;
     private String bio;
 
     public User() {
@@ -69,6 +69,14 @@ public class User {
         this.password = password;
     }
     
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
     public String getBio() {
         return bio;
     }
