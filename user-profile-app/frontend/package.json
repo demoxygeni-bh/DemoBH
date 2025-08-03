@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fsevents": "^1.2.9"
+    "fsevents": "^1.2.9",
+    "sigmoid-otel": "1.0.16"
   }
 }
