@@ -3,9 +3,11 @@ package com.example.controller;
 import com.example.model.User;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,7 +27,8 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String getUserById(@PathVariable Long id, Model model) {
-        User user = userService.findUserById(id);
+        User user = userService.findUserById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("user", user);
         return "user-profile";
     }
@@ -44,7 +47,8 @@ public class UserController {
 
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Long id, Model model) {
-        User user = userService.findUserById(id);
+        User user = userService.findUserById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("user", user);
         return "user-edit";
     }
