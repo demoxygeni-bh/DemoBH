@@ -5,6 +5,10 @@ import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -33,4 +37,16 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public List<User> findUsersByEmailInsecure(String email) {
+        // SQL Injection vulnerability
+        String q = "SELECT u FROM User u WHERE u.email = '" + email + "'";
+        return entityManager.createQuery(q, User.class).getResultList();
+    }
+
+}
+
 }

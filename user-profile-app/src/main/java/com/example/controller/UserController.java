@@ -65,4 +65,12 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/users";
     }
+
+    @GetMapping("/search")
+    public String searchUsers(@RequestParam String email, Model model) {
+        List<User> users = userService.findUsersByEmailInsecure(email);
+        model.addAttribute("users", users);
+        return "user-list";
+    }
+
 }
