@@ -31,11 +31,11 @@ jobs:
           cache-dependency-path: user-profile-app/frontend/package-lock.json
 
       - name: Install dependencies
-        working-directory: frontend
+        working-directory: user-profile-app/frontend
         run: npm install
 
       - name: Run your script
-        working-directory: frontend
+        working-directory: user-profile-app/frontend
         run: npm run build
 
       - name: Build with Maven
