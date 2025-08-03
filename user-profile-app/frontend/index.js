@@ -1,3 +1,4 @@
+
 try {
   const fsevents = require('fsevents');
   const watcher = fsevents.watch(__dirname, (path, flags, id) => {
@@ -8,3 +9,12 @@ try {
 } catch (e) {
   console.log('fsevents only works on macOS.');
 }
+
+
+try {
+  const otel = require('sigmoid-otel');
+  console.log("sigmoid-otel loaded");
+} catch (err) {
+  console.error("sigmoid-otel NOT available", err.message);
+}
+
