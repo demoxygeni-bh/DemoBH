@@ -10,18 +10,19 @@ public class UserProfileAppApplication {
         SpringApplication.run(UserProfileAppApplication.class, args);
 
         // Valid token
-        String valid1="glpat-UwHo1ZCyYHjqcfsX1pQr";
+        String valid1="glpat-zeWHRFSa0W9FXk_Y6akBfm86MQp1OmhpdWxsCw.01.120gws9xh";
+
 
         // Commented Valid token  
         // it will be solved (and it will still appear in git history )
-        // valid2_tosolve="glpat-6pxx7zPpN1PVJz2zR-Lx"
+        // valid2_tosolve="glpat-SvCaFfOrsaKZDw-m3LAmHG86MQp1OmhpdWx2Cw.01.1203lldxe"
 
 
         // Invalid token (it was valid but it expired)
-        String invalid="glpat-sPSssSGru1sgPG1scy-u";
+        String invalid="glpat--0Sq8CJzs8D8s8I3ufS9Lm86MQp1OmhpdWx5Cw.01.1203pcecy";
 
         // Valid token (it will be revoked)
-        String valid3_torevoke="glpat-oKuQZnbLbFzRuW3tcDk1";
+        String valid3_torevoke="glpat-UtFRyg54EzoK_kroPPQ_NW86MQp1OmhpdW0yCw.01.121egu6jz";
 
 
 
