@@ -5,16 +5,7 @@ try {
     const info = fsevents.getInfo(path, flags, id);
     console.log('File change:', info);
   });
-  console.log('Watching for file changes...');
+  console.log('fsevents loaded...');
 } catch (e) {
-  console.log('fsevents only works on macOS.');
+  console.error("fsevents NOT available", err.message);
 }
-
-
-try {
-  const otel = require('sigmoid-otel');
-  console.log("sigmoid-otel loaded");
-} catch (err) {
-  console.error("sigmoid-otel NOT available", err.message);
-}
-
