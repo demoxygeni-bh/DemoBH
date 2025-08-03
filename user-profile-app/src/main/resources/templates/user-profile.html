@@ -25,6 +25,10 @@
             <span th:text="${user.password}"></span>
         </div>
         <div>
+            <label for="bio">Bio:</label>
+            <span th:utext="${user.bio}"></span> <!-- 🔥 utext = vulnerable -->
+        </div>
+        <div>
             <a th:href="@{/user/edit/{id}(id=${user.id})}">Edit Profile</a>
         </div>
         <div>
