@@ -49,7 +49,9 @@
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <artifactId>user-profile-app</artifactId>
+                <version>1.0.0</version>
+                <packaging>war</packaging>
                 <configuration>
                     <mainClass>com.example.UserProfileAppApplication</mainClass>
                 </configuration>
