@@ -29,6 +29,10 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm install
+
       - name: Build with Maven
         run: mvn clean install -DskipTests
         working-directory: user-profile-app
