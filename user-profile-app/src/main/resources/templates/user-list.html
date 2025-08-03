@@ -31,7 +31,11 @@
             </tr>
         </tbody>
     </table>
-    <a href="/user/create" class="btn btn-success">Create New User</a>
+
+    <div class="mt-4">
+        <a href="/user/create" class="btn btn-success">Create New User</a>
+        <a th:href="@{/users/search}" class="btn btn-warning ml-2">Search Users</a>
+    </div>
 </div>
 </body>
 </html>
