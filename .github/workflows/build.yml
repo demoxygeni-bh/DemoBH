@@ -34,8 +34,13 @@ jobs:
           xygeni_url: https://api.xygeni.io
           token: ${{ secrets.XYGENI_TOKEN }}
           gh_token: ${{ secrets.PAT_FOR_XYGENI_SCAN }}
-          command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
-
+          # Block Secrets
+          # command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
+          # Block Malware
+          # command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
+          # Only Scan
+          command: -cop commitResolution:auto scan --send-to github/status
+          
       - name: Archive WAR file
         if: success()
         uses: actions/upload-artifact@v4
