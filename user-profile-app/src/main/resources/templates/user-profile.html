@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div>
+            <label for="name">Name:</label>
+            <span th:text="${user.name}"></span>
+        </div>
+        <div>
+            <label for="surname">Surname:</label>
+            <span th:text="${user.surname}"></span>
+        </div>
+        <div>
+            <label for="loginId">Login ID:</label>
+            <span th:text="${user.loginId}"></span>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <span th:text="${user.password}"></span>
+        </div>
+        <div>
+            <a th:href="@{/user/edit/{id}(id=${user.id})}">Edit Profile</a>
+        </div>
+        <div>
+            <a th:href="@{/user/list}">Back to User List</a>
+        </div>
+    </div>
+</body>
+</html>
