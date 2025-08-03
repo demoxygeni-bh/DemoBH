@@ -8,5 +8,22 @@ public class UserProfileAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UserProfileAppApplication.class, args);
+
+        // Valid token
+        String valid1="glpat-UwHo1ZCyYHjqcfsX1pQr";
+
+        // Commented Valid token  
+        // it will be solved (and it will still appear in git history )
+        // valid2_tosolve="glpat-6pxx7zPpN1PVJz2zR-Lx"
+
+
+        // Invalid token (it was valid but it expired)
+        String invalid="glpat-sPSssSGru1sgPG1scy-u";
+
+        // Valid token (it will be revoked)
+        String valid3_torevoke="glpat-oKuQZnbLbFzRuW3tcDk1";
+
+
+
     }
 }
