@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class VulnerableApp {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter email to search: ");
-        String email = scanner.nextLine();
+        String email = args[0];
 
         try (Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
              Statement stmt = conn.createStatement()) {
