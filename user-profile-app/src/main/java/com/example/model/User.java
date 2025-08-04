@@ -1,7 +1,7 @@
 package com.example.model;
 
 //import jakarta.persistence.*;
-import javax.persistence*;
+import javax.persistence.*;
 //import javax.persistence.Entity;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
