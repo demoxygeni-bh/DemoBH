@@ -19,7 +19,8 @@ public class VulnerableApp {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Manage SQL exceptions
+            System.err.println("SQL error: " + e.getMessage());
         }
     }
 }
