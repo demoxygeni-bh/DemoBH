@@ -36,9 +36,9 @@ jobs:
           xygeni_url: https://api.xygeni.io
           token: ${{ secrets.XYGENI_TOKEN }}
           gh_token: ${{ secrets.PAT_FOR_XYGENI_SCAN }}
-          # Block Secrets
+          # Block Secrets => BREAK BUILD
           # command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
-          # Block Malware
+          # Block Malware => BREAK BUILD
           command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail
           # Only Scan
           # command: -cop commitResolution:auto scan --send-to github/status --never-fail
