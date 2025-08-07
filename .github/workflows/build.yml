@@ -39,7 +39,7 @@ jobs:
           # Block Secrets => BREAK BUILD
           # command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
           # Block Malware => BREAK BUILD
-          command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail
+          command: -cop commitResolution:auto scan --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail --skip=codetamper,compliance --send-to github/status
           # Only Scan
           # command: -cop commitResolution:auto scan --send-to github/status --never-fail
 
