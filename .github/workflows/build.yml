@@ -1,12 +1,10 @@
 name: Build WAR Package
 
 on:
-  workflow_dispatch:  # Manual triggering
-
-  # push:
-  #  branches: [main]
-  # pull_request:
-  #  branches: [main]
+ push:
+   branches: [main]
+  pull_request:
+   branches: [main]
 
 env:
   GITLAB_PAT: ${{ secrets.GITLAB_PAT }}
@@ -37,7 +35,7 @@ jobs:
           token: ${{ secrets.XYGENI_TOKEN }}
           gh_token: ${{ secrets.PAT_FOR_XYGENI_SCAN }}
           # Block Secrets => BREAK BUILD
-          # command: -cop commitResolution:auto scan --send-to github/status --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail
+          # command: -cop commitResolution:auto scan --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail --skip=codetamper,compliance --send-to github/status
           # Block Malware => BREAK BUILD
           command: -cop commitResolution:auto scan --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail --skip=codetamper,compliance --send-to github/status
           # Only Scan
