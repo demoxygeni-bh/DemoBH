@@ -8,19 +8,18 @@ public class VulnerableApp {
         String email = args[0];
 
         try (Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
-             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+             Statement stmt = conn.createStatement()) {
 
-            // Use PreparedStatement to prevent SQL injection
-            pstmt.setString(1, email);
-            ResultSet rs = pstmt.executeQuery();
+            // Vulnerable SQL statement
+            String query = "SELECT * FROM users WHERE email = '" + email + "'";
+            ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
                 System.out.println("User: " + rs.getString("name") + " - " + rs.getString("email"));
             }
 
         } catch (SQLException e) {
-            // Manage SQL exceptions
-            System.err.println("SQL error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
