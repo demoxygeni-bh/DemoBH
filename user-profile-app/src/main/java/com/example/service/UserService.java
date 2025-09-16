@@ -17,7 +17,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User saveUser(User user) {
         return userRepository.save(user);
     }
 
@@ -41,11 +40,9 @@ public class UserService {
     private EntityManager entityManager;
 
     public List<User> findUsersByEmailInsecure(String email) {
-        // Fixed SQL Injection vulnerability
-        String q = "SELECT u FROM User u WHERE u.email = :email";
-        return entityManager.createQuery(q, User.class)
-                            .setParameter("email", email)
-                            .getResultList();
+        // SQL Injection vulnerability
+        String q = "SELECT u FROM User u WHERE u.email = '" + email + "'";
+        return entityManager.createQuery(q, User.class).getResultList();
     }
 
 }
