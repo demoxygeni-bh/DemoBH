@@ -1,76 +1,49 @@
-package com.example.controller;
+package com.example.service;
 
 import com.example.model.User;
-import com.example.service.UserService;
+import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import java.util.List;
+import java.util.Optional;
 
-@Controller
-@RequestMapping("/users")
-public class UserController {
+@Service
+public class UserService {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
-    @GetMapping
-    public String getUserList(Model model) {
-        List<User> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "user-list";
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 
-    @GetMapping("/{id}")
-    public String getUserById(@PathVariable Long id, Model model) {
-        User user = userService.findUserById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        model.addAttribute("user", user);
-        return "user-profile";
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 
-    @GetMapping("/new")
-    public String createUserForm(Model model) {
-        model.addAttribute("user", new User());
-        return "user-edit";
+    public Optional<User> findUserById(Long id) {
+        return userRepository.findById(id);
     }
 
-    @PostMapping
-    public String createUser(@ModelAttribute User user) {
-        userService.saveUser(user);
-        return "redirect:/users";
+    public User updateUser(User user) {
+        return userRepository.save(user);
     }
 
-    @GetMapping("/edit/{id}")
-    public String editUserForm(@PathVariable Long id, Model model) {
-        User user = userService.findUserById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        model.addAttribute("user", user);
-        return "user-edit";
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
-    @PostMapping("/edit/{id}")
-    public String updateUser(@PathVariable Long id, @ModelAttribute User user) {
-        user.setId(id);
-        userService.updateUser(user);
-        return "redirect:/users";
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return "redirect:/users";
-    }
-
-    @GetMapping("/search")
-    public String searchUsers(@RequestParam String email, Model model) {
-        List<User> users = userService.findUsersByEmailInsecure(email);
-        model.addAttribute("users", users);
-        return "user-list";
+    public List<User> findUsersByEmailInsecure(String email) {
+        // SQL Injection vulnerability
+        String q = "SELECT u FROM User u WHERE u.email = '" + email + "'";
+        return entityManager.createQuery(q, User.class).getResultList();
     }
 
 }
