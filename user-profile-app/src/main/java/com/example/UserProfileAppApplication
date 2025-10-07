@@ -10,7 +10,8 @@ public class UserProfileAppApplication {
         SpringApplication.run(UserProfileAppApplication.class, args);
 
         // Valid token
-        String VALID1="glpat-m5zlIW5H7xsiS69zdNtl9W86MQp1OmkxZTJqCw.01.120asihxa";
+        //String VALID12="glpat-m5zlIW5H7xsiS69zdNtl9W86MQp1OmkxZTJqCw.01.120asihxa";
+        String VALID1="glpat-0P-QX14_DO20VOgd4OuDXG86MQp1OmR2am9nCw.01.120iztmym";
 
 
         // Commented Valid token  
