@@ -8,11 +8,11 @@ public class VulnerableApp {
         String email = args[0];
 
         try (Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
-             Statement stmt = conn.createStatement()) {
+             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
 
-            // Vulnerable SQL statement
-            String query = "SELECT * FROM users WHERE email = '" + email + "'";
-            ResultSet rs = stmt.executeQuery(query);
+            // Fix: Use PreparedStatement to prevent SQL injection
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 System.out.println("User: " + rs.getString("name") + " - " + rs.getString("email"));
