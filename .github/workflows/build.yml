@@ -24,11 +24,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: Build with Maven
-        run: mvn clean install -DskipTests
-        working-directory: user-profile-app
-
+      
       - name: Xygeni-Scanner
         uses: xygeni/xygeni-action@v3.2.0
         id: Xygeni-Scanner
@@ -39,9 +35,13 @@ jobs:
           # Block Secrets => BREAK BUILD
           # command: -cop commitResolution:auto scan --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/secrets-critical.guardrail --skip=codetamper,compliance --send-to github/status
           # Block Malware => BREAK BUILD
-          command: -cop commitResolution:auto scan --fail-on file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail --skip=codetamper,compliance --send-to github/status
+          command: -cop commitResolution:auto scan --fail-on="#no-secrets"  file:/home/runner/work/DemoBH/DemoBH/guardrails/malicious-deps.guardrail --skip=codetamper,compliance --send-to github/status
           # Only Scan
           # command: -cop commitResolution:auto scan --send-to github/status --never-fail
+
+      - name: Build with Maven
+        run: mvn clean install -DskipTests
+        working-directory: user-profile-app
 
       - name: Archive WAR file
         if: success()
