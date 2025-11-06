@@ -10,12 +10,12 @@ public class UserProfileAppApplication {
         SpringApplication.run(UserProfileAppApplication.class, args);
 
         // Valid token
-        String VALID1_CLEAR="glpat-E9xTEAAwsj2n3rUwUatNu286MQp1OmR2am9nCw.01.121wdmi0t";
+        String VALID1_CLEAR="glpat-pdP6funr9KZi-qoR3NPxb286MQp1OmR2am9nCw.01.120xv6fqj";
 
 
         // Commented Valid token  
         // it will be solved
-        // VALID2_COMMENT="glpat-162lY4YgmDmJs_BWy0VXlG86MQp1OmR2am9nCw.01.120jbyz0a"
+        // VALID2_COMMENT="glpat-F6S96SdfymzOcRLuK1qY9m86MQp1OmR2am9nCw.01.12104fh38"
 
 
         // Invalid token (it was valid but it was revoked = NOT EXPLOITABLE)
