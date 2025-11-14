@@ -19,7 +19,7 @@ public class UserProfileAppApplication {
 
 
         // Invalid token (it was valid but it was revoked = NOT EXPLOITABLE)
-        String INVALID="glpat--0Sq8CJzs8D8s8I3ufS9Lm86MQp1OmhpdWx5Cw.01.1203pcecy";
+        // String INVALID="glpat--0Sq8CJzs8D8s8I3ufS9Lm86MQp1OmhpdWx5Cw.01.1203pcecy";
 
         // It´s not an actual token, but it looks like one
         String FALSE_SECRET="glpat-UtFRyg54EzoK_kroPPQ_N86MQp1OmhpdW0yCw.01.121egu6jz";
