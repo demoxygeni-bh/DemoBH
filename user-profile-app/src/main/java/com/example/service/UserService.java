@@ -41,11 +41,9 @@ public class UserService {
     private EntityManager entityManager;
 
     public List<User> findUsersByEmailInsecure(String email) {
-        // SQL Injection vulnerability fixed
-        String q = "SELECT u FROM User u WHERE u.email = :email";
-        return entityManager.createQuery(q, User.class)
-                            .setParameter("email", email)
-                            .getResultList();
+        // SQL Injection vulnerability
+        String q = "SELECT u FROM User u WHERE u.email = '" + email + "'";
+        return entityManager.createQuery(q, User.class).getResultList();
     }
 
 }
