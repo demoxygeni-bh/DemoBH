@@ -3,23 +3,7 @@ import java.util.Scanner;
 
 public class VulnerableApp {
 
-    public static void main(String[] args) {
-        System.out.print("Enter email to search: ");
-        String email = args[0];
-
-        try (Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
-             Statement stmt = conn.createStatement()) {
-
-            // Vulnerable SQL statement
-            String query = "SELECT * FROM users WHERE email = '" + email + "'";
-            ResultSet rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                System.out.println("User: " + rs.getString("name") + " - " + rs.getString("email"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+	// Removed leftover debug main method to avoid unintended execution in production
+	// If this class is part of a J2EE application, its logic should be invoked
+	// through the appropriate application framework components (e.g., servlets, services).
 }
